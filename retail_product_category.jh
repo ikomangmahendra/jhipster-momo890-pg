@@ -1,0 +1,15 @@
+entity Product {
+	name String
+}
+
+entity Category {
+	name String
+}
+
+relationship ManyToMany {
+	Product{categories} to Category
+}
+
+
+service * with serviceClass
+dto * with mapstruct
