@@ -1,0 +1,24 @@
+{
+  "annotations": {
+    "changelogDate": "20250227115137"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Product",
+  "relationships": [
+    {
+      "otherEntityName": "category",
+      "relationshipName": "categories",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
