@@ -1,0 +1,38 @@
+erDiagram
+    PRODUCT {
+        int id PK
+        varchar name
+        decimal price
+        varchar sku
+        text description
+    }
+
+    CATEGORY {
+        int id PK
+        varchar name
+        int parent_id FK "Self Reference for Subcategories"
+    }
+
+    PRODUCT_CATEGORY {
+        int id PK
+        int product_id FK
+        int category_id FK
+    }
+
+    ATTRIBUTE {
+        int id PK
+        varchar name
+    }
+
+    PRODUCT_ATTRIBUTE {
+        int id PK
+        int product_id FK
+        int attribute_id FK
+        varchar value
+    }
+
+    PRODUCT ||--o{ PRODUCT_CATEGORY : belongs_to
+    CATEGORY ||--o{ PRODUCT_CATEGORY : contains
+    PRODUCT ||--o{ PRODUCT_ATTRIBUTE : has
+    ATTRIBUTE ||--o{ PRODUCT_ATTRIBUTE : defines
+    CATEGORY ||--o{ CATEGORY : subcategory_of

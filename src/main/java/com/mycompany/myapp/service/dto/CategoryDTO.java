@@ -15,7 +15,9 @@ public class CategoryDTO implements Serializable {
 
     private String name;
 
-    private Set<ProductDTO> products = new HashSet<>();
+    private Long parentId;
+
+    private Set<CategoryDTO> subcategories = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -33,12 +35,20 @@ public class CategoryDTO implements Serializable {
         this.name = name;
     }
 
-    public Set<ProductDTO> getProducts() {
-        return products;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setProducts(Set<ProductDTO> products) {
-        this.products = products;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public Set<CategoryDTO> getSubcategories() {
+        return subcategories;
+    }
+
+    public void setSubcategories(Set<CategoryDTO> subcategories) {
+        this.subcategories = subcategories;
     }
 
     @Override
@@ -68,7 +78,6 @@ public class CategoryDTO implements Serializable {
         return "CategoryDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", products=" + getProducts() +
             "}";
     }
 }

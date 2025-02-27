@@ -1,32 +1,35 @@
 package com.mycompany.myapp.service.mapper;
 
 import com.mycompany.myapp.domain.Category;
-import com.mycompany.myapp.domain.Product;
 import com.mycompany.myapp.service.dto.CategoryDTO;
-import com.mycompany.myapp.service.dto.ProductDTO;
-import java.util.Set;
-import java.util.stream.Collectors;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 /**
  * Mapper for the entity {@link Category} and its DTO {@link CategoryDTO}.
  */
 @Mapper(componentModel = "spring")
 public interface CategoryMapper extends EntityMapper<CategoryDTO, Category> {
-    @Mapping(target = "products", source = "products", qualifiedByName = "productIdSet")
+    @Mapping(target = "parentId", source = "parent", qualifiedByName = "toParentId")
     CategoryDTO toDto(Category s);
 
-    @Mapping(target = "products", ignore = true)
-    @Mapping(target = "removeProducts", ignore = true)
+    @Mapping(target = "parent", source = "parentId", qualifiedByName = "toParentEntity")
     Category toEntity(CategoryDTO categoryDTO);
 
-    @Named("productId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    ProductDTO toDtoProductId(Product product);
+    @Named("toParentId")
+    default Long toParentId(Category parent) {
+        return parent == null ? null : parent.getId();
+    }
 
-    @Named("productIdSet")
-    default Set<ProductDTO> toDtoProductIdSet(Set<Product> product) {
-        return product.stream().map(this::toDtoProductId).collect(Collectors.toSet());
+    @Named("toParentEntity")
+    default Category toParentEntity(Long parentId) {
+        if (parentId == null) {
+            return null;
+        } else {
+            Category parent = new Category();
+            parent.setId(parentId);
+            return parent;
+        }
     }
 }
