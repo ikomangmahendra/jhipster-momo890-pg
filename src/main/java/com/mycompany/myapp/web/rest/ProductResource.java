@@ -140,6 +140,12 @@ public class ProductResource {
         return productService.findAll();
     }
 
+    @GetMapping("/category/{categoriesId}")
+    public List<ProductDTO> findAllProductsByCategoriesId(@PathVariable("categoriesId") Long categoriesId) {
+        LOG.debug("REST request to get all Products");
+        return productService.findAllProductsByCategoriesId(categoriesId);
+    }
+
     /**
      * {@code GET  /products/:id} : get the "id" product.
      *

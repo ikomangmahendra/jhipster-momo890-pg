@@ -6,7 +6,10 @@ import com.mycompany.myapp.service.dto.CategoryDTO;
 import com.mycompany.myapp.service.dto.ProductDTO;
 import java.util.Set;
 import java.util.stream.Collectors;
-import org.mapstruct.*;
+import org.mapstruct.BeanMapping;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 /**
  * Mapper for the entity {@link Product} and its DTO {@link ProductDTO}.

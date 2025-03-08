@@ -27,4 +27,6 @@ public interface ProductRepository extends ProductRepositoryWithBagRelationships
     default Page<Product> findAllWithEagerRelationships(Pageable pageable) {
         return this.fetchBagRelationships(this.findAll(pageable));
     }
+
+    List<Product> findAllProductsByCategoriesId(Long categoriesId);
 }
