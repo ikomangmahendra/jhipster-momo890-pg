@@ -1,0 +1,7 @@
+entity Notification {
+	startDate Instant
+    endDate Instant
+}
+
+paginate * with pagination
+service * with serviceClass

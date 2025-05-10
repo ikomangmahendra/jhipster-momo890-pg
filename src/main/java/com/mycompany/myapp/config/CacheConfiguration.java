@@ -87,6 +87,7 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.Product.class.getName() + ".categories", jcacheConfiguration);
             createCache(cm, com.mycompany.myapp.domain.Category.class.getName(), jcacheConfiguration);
             createCache(cm, com.mycompany.myapp.domain.Category.class.getName() + ".products", jcacheConfiguration);
+            createCache(cm, com.mycompany.myapp.domain.Notification.class.getName(), jcacheConfiguration);
             // jhipster-needle-redis-add-entry
         };
     }

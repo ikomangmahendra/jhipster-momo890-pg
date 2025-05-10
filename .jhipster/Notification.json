@@ -1,0 +1,21 @@
+{
+  "annotations": {
+    "changelogDate": "20250308052748"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Notification",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
