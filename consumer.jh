@@ -1,0 +1,8 @@
+entity Notification {
+	startDate Instant
+    endDate Instant
+}
+
+dto * with mapstruct
+paginate * with pagination
+service * with serviceClass
