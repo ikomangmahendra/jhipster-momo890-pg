@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (customer(); as customerRef) {
+      <div>
+        <h2 data-cy="customerDetailsHeading"><span>Customer</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ customerRef.id }}</span>
+          </dd>
+          <dt><span>Register Date</span></dt>
+          <dd>
+            <span>{{ customerRef.registerDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Customer Type</span></dt>
+          <dd>
+            <span>{{
+              { null: '', PERSONAL: 'PERSONAL', BUSINESS: 'BUSINESS', CORPORATE: 'CORPORATE' }[customerRef.customerType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>First Name</span></dt>
+          <dd>
+            <span>{{ customerRef.firstName }}</span>
+          </dd>
+          <dt><span>Last Name</span></dt>
+          <dd>
+            <span>{{ customerRef.lastName }}</span>
+          </dd>
+          <dt><span>Primary Email</span></dt>
+          <dd>
+            <span>{{ customerRef.primaryEmail }}</span>
+          </dd>
+          <dt><span>Primary Phone</span></dt>
+          <dd>
+            <span>{{ customerRef.primaryPhone }}</span>
+          </dd>
+          <dt><span>Status</span></dt>
+          <dd>
+            <span>{{
+              { null: '', ACTIVE: 'ACTIVE', IN_ACTIVE: 'IN_ACTIVE', SUSPENDED: 'SUSPENDED', BLOCKED: 'BLOCKED', CLOSED: 'CLOSED' }[
+                customerRef.status ?? 'null'
+              ]
+            }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/customer', customerRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
